@@ -12,3 +12,20 @@ img {
     height: 175px;
     margin: 10px;
 }
+
+.padronizarEspacamento {
+    margin: 25px;
+    padding-bottom: 25px;
+}
+
+.notaMenor {
+    color: #B22222;
+}
+
+.somatorio {
+    color: #008000;
+}
+
+.notaMaior {
+    color: #000080;
+}

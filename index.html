@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
   <head>
     <title>Kata Soma</title>
     <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css_project/style.css">
   </head>
-  <body>
+
+  <body onload="carregarDados()">
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js_project/utils.js"></script>
+    
     <div class="container text-center rounded">
-        <div class="row align-items-center">
+      <form>
+        <div class="row align-items-center padronizarEspacamento">
           <div class="col-3">
-            <img src="img/ctkb.png" class="rounded" alt="...">
+            <img src="img/ctkb.png" class="rounded">
           </div>
           <div class="col-6">
             <p class="lead">CONFEDERAÇÃO TRADICIONAL DE KARATÊ E LUTAS ASSOCIADAS DO BRASIL</p>
@@ -20,9 +25,61 @@
             <p class="lead">AVALIAÇÃO DE KATA</p>
           </div>
           <div class="col-3">
-            <img src="img/fekrn.png" class="rounded" alt="...">
+            <img src="img/fekrn.png" class="rounded">
           </div>
         </div>
-      </div>
+        <div class="row align-items-center padronizarEspacamento">
+          <div class="col">
+            <label for="notaArbitro01" class="form-label">ÁRBITRO 01</label>
+            <input type="text" class="form-control" id="notaArbitro01" placeholder="7.00" required>
+          </div>
+          <div class="col">
+            <label for="notaArbitro02" class="form-label">ÁRBITRO 02</label>
+            <input type="text" class="form-control" id="notaArbitro02" placeholder="7.00" required>
+          </div>
+          <div class="col">
+            <label for="notaArbitro03" class="form-label">ÁRBITRO 03</label>
+            <input type="text" class="form-control" id="notaArbitro03" placeholder="7.00" required>
+          </div>
+          <div class="col">
+            <label for="notaArbitro04" class="form-label">ÁRBITRO 04</label>
+            <input type="text" class="form-control" id="notaArbitro04" placeholder="7.00" required>
+          </div>
+          <div class="col">
+            <label for="notaArbitro05" class="form-label">ÁRBITRO 05</label>
+            <input type="text" class="form-control" id="notaArbitro05" placeholder="7.00" required>
+          </div>
+        </div>
+        <div class="row align-items-center padronizarEspacamento">
+          <div class="col-3">
+            <label for="notaMenorConcedida" class="form-label notaMenor">MENOR NOTA</label>
+            <input type="text" class="form-control" id="notaMenorConcedida" readonly>
+          </div>
+          <div class="col-6">
+            <label for="somatorioNotas" class="form-label somatorio">SOMA DAS NOTAS</label>
+            <input type="text" class="form-control" id="somatorioNotas" readonly>
+          </div>
+          <div class="col-3">
+            <label for="notaMaiorConcedida" class="form-label notaMaior">MAIOR NOTA</label>
+            <input type="text" class="form-control" id="notaMaiorConcedida" readonly>
+          </div>
+        </div>
+        <div class="row justify-content-end padronizarEspacamento">
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary" onclick="realizarSoma(
+              document.getElementById('notaArbitro01').value,
+              document.getElementById('notaArbitro02').value,
+              document.getElementById('notaArbitro03').value,
+              document.getElementById('notaArbitro04').value,
+              document.getElementById('notaArbitro05').value
+              )">REALIZAR SOMA</button>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-secondary" onclick="limparDados()">LIMPAR DADOS</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
+  
 </html>
