@@ -14,8 +14,8 @@ img {
 }
 
 .padronizarEspacamento {
-    margin: 25px;
-    padding-bottom: 25px;
+    margin: 10px;
+    padding-bottom: 10px;
 }
 
 .notaMenor {
@@ -28,4 +28,8 @@ img {
 
 .notaMaior {
     color: #000080;
+}
+
+.ajusteMargem {
+    margin-top: 15px;
 }

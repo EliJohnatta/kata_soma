@@ -1,18 +1,5 @@
-function carregarDados() {
-    if (sessionStorage.length >= 1) {
-        document.getElementById("notaArbitro01").value = sessionStorage.getItem("notaArbitro01");
-        document.getElementById("notaArbitro02").value = sessionStorage.getItem("notaArbitro02");
-        document.getElementById("notaArbitro03").value = sessionStorage.getItem("notaArbitro03");
-        document.getElementById("notaArbitro04").value = sessionStorage.getItem("notaArbitro04");
-        document.getElementById("notaArbitro05").value = sessionStorage.getItem("notaArbitro05");
-        document.getElementById("notaMenorConcedida").value = sessionStorage.getItem("notaMenorConcedida");
-        document.getElementById("somatorioNotas").value = sessionStorage.getItem("somatorioNotas");
-        document.getElementById("notaMaiorConcedida").value = sessionStorage.getItem("notaMaiorConcedida");
-    }
-}
-
-function realizarSoma(notaArbitro01, notaArbitro02, notaArbitro03, notaArbitro04, notaArbitro05) {
-    if (notaArbitro01 != '' && notaArbitro02 != '' && notaArbitro03 != '' && notaArbitro04 != '' && notaArbitro05 != '') {
+function realizarSoma(notaArbitro01, notaArbitro02, notaArbitro03, notaArbitro04 = "", notaArbitro05 = "", quantidadeArbitros = "") {
+    if (notaArbitro01 != "" && notaArbitro02 != "" && notaArbitro03 != "" && notaArbitro04 != "" && notaArbitro05 != "" && quantidadeArbitros == "5") {
         const notasConcedidas = [
             Number.parseFloat(notaArbitro01),
             Number.parseFloat(notaArbitro02),
@@ -24,18 +11,58 @@ function realizarSoma(notaArbitro01, notaArbitro02, notaArbitro03, notaArbitro04
         notasConcedidas.sort(function(a, b){return a - b});
         let soma = notasConcedidas[1] + notasConcedidas[2] + notasConcedidas[3];
         
-        document.getElementById("notaMenorConcedida").value = notasConcedidas[0].toFixed(2);
-        document.getElementById("somatorioNotas").value = `${notasConcedidas[1].toFixed(2)} + ${notasConcedidas[2].toFixed(2)} + ${notasConcedidas[3].toFixed(2)} = ${soma.toFixed(2)}`;
-        document.getElementById("notaMaiorConcedida").value = notasConcedidas[4].toFixed(2);
+        popularDados(
+            notasConcedidas[0].toFixed(2),
+            `${notasConcedidas[1].toFixed(2)} + ${notasConcedidas[2].toFixed(2)} + ${notasConcedidas[3].toFixed(2)} = ${soma.toFixed(2)}`,
+            notasConcedidas[4].toFixed(2)
+        );
+    }
+    else if (notaArbitro01 != "" && notaArbitro02 != "" && notaArbitro03 != "") {
+        const notasConcedidas = [
+            Number.parseFloat(notaArbitro01),
+            Number.parseFloat(notaArbitro02),
+            Number.parseFloat(notaArbitro03)
+        ];
         
-        sessionStorage.setItem("notaArbitro01", notaArbitro01);
-        sessionStorage.setItem("notaArbitro02", notaArbitro02);
-        sessionStorage.setItem("notaArbitro03", notaArbitro03);
-        sessionStorage.setItem("notaArbitro04", notaArbitro04);
-        sessionStorage.setItem("notaArbitro05", notaArbitro05);
-        sessionStorage.setItem("notaMenorConcedida", document.getElementById("notaMenorConcedida").value);
-        sessionStorage.setItem("somatorioNotas", document.getElementById("somatorioNotas").value);
-        sessionStorage.setItem("notaMaiorConcedida", document.getElementById("notaMaiorConcedida").value);
+        notasConcedidas.sort(function(a, b){return a - b});
+        let soma = notasConcedidas[0] + notasConcedidas[1] + notasConcedidas[2];
+        
+        popularDados(
+            notasConcedidas[0].toFixed(2),
+            `${notasConcedidas[0].toFixed(2)} + ${notasConcedidas[1].toFixed(2)} + ${notasConcedidas[2].toFixed(2)} = ${soma.toFixed(2)}`,
+            notasConcedidas[2].toFixed(2)
+        );
+    }
+    else {
+        alert("É necessário informar TODAS as NOTAS.");
+    }
+}
+
+function popularDados(notaMenorConcedida, somatorioNotas, notaMaiorConcedida) {
+    document.getElementById("notaMenorConcedida").value = notaMenorConcedida;
+    document.getElementById("somatorioNotas").value = somatorioNotas;
+    document.getElementById("notaMaiorConcedida").value = notaMaiorConcedida;
+}
+
+function verificarQuantidadeArbitrosSelecionada(quantidadeArbitros) {
+    definirQuantidadeArbitros(Number.parseInt(quantidadeArbitros));
+    limparDados();
+}
+
+function definirQuantidadeArbitros(quantidadeArbitros) {
+    if (quantidadeArbitros == 3) {
+        document.getElementById("divNotaArbitro04").style.display = "none";
+        document.getElementById("divNotaArbitro05").style.display = "none";
+        document.getElementById("divBtnRealizarSomaComCincoNotas").style.display = "none";
+        
+        document.getElementById("divBtnRealizarSomaComTresNotas").style.display = "block";
+    }
+    else {
+        document.getElementById("divNotaArbitro04").style.display = "block";
+        document.getElementById("divNotaArbitro05").style.display = "block";
+        document.getElementById("divBtnRealizarSomaComTresNotas").style.display = "none";
+
+        document.getElementById("divBtnRealizarSomaComCincoNotas").style.display = "block";
     }
 }
 
@@ -48,6 +75,4 @@ function limparDados() {
     document.getElementById("notaMenorConcedida").value = "";
     document.getElementById("somatorioNotas").value = "";
     document.getElementById("notaMaiorConcedida").value = "";
-
-    sessionStorage.clear();
 }
