@@ -1,5 +1,5 @@
-function realizarSoma(notaArbitro01, notaArbitro02, notaArbitro03, notaArbitro04 = "", notaArbitro05 = "", quantidadeArbitros = "") {
-    if (notaArbitro01 != "" && notaArbitro02 != "" && notaArbitro03 != "" && notaArbitro04 != "" && notaArbitro05 != "" && quantidadeArbitros == "5") {
+function realizarSoma(quantidadeArbitros, notaArbitro01, notaArbitro02, notaArbitro03, notaArbitro04, notaArbitro05) {
+    if (quantidadeArbitros == "5" && notaArbitro01 != "" && notaArbitro02 != "" && notaArbitro03 != "" && notaArbitro04 != "" && notaArbitro05 != "") {
         const notasConcedidas = [
             Number.parseFloat(notaArbitro01),
             Number.parseFloat(notaArbitro02),
@@ -17,7 +17,7 @@ function realizarSoma(notaArbitro01, notaArbitro02, notaArbitro03, notaArbitro04
             notasConcedidas[4].toFixed(2)
         );
     }
-    else if (notaArbitro01 != "" && notaArbitro02 != "" && notaArbitro03 != "") {
+    else if (quantidadeArbitros == "3" && notaArbitro01 != "" && notaArbitro02 != "" && notaArbitro03 != "") {
         const notasConcedidas = [
             Number.parseFloat(notaArbitro01),
             Number.parseFloat(notaArbitro02),
