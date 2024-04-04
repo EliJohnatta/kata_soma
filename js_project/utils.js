@@ -13,7 +13,7 @@ function realizarSoma(quantidadeArbitros, notaArbitro01, notaArbitro02, notaArbi
         
         popularDados(
             notasConcedidas[0].toFixed(2),
-            `${notasConcedidas[1].toFixed(2)} + ${notasConcedidas[2].toFixed(2)} + ${notasConcedidas[3].toFixed(2)} = ${soma.toFixed(2)}`,
+            soma.toFixed(2),
             notasConcedidas[4].toFixed(2)
         );
     }
@@ -29,7 +29,7 @@ function realizarSoma(quantidadeArbitros, notaArbitro01, notaArbitro02, notaArbi
         
         popularDados(
             notasConcedidas[0].toFixed(2),
-            `${notasConcedidas[0].toFixed(2)} + ${notasConcedidas[1].toFixed(2)} + ${notasConcedidas[2].toFixed(2)} = ${soma.toFixed(2)}`,
+            soma.toFixed(2),
             notasConcedidas[2].toFixed(2)
         );
     }
